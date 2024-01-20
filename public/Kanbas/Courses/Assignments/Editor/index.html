@@ -8,14 +8,16 @@
     <h2>Assignment Name</h2>
     <input value="A1 - HTML" /><br />
     <textarea>
-This assignment describes how to install the development environment for creating andworking with Web applications we will be developing this semester. We will add new content every week, pushing the code to a GitHub source repository, and then deployingthe content to a remote server hosted on Netlify.
+This assignment describes how to install the development environment for creating and working with Web applications we will be developing this semester. We will add new content every week, pushing the code to a GitHub source repository, and then deployingthe content to a remote server hosted on Netlify.
     </textarea>
     <br />
     <br />
-    <label for="points">Points</label><br /><input
-      id="points"
-      value="100"
-    /><br /><br /><label>Assignment Group</label><br /><select>
+    <label for="points">Points</label><br />
+    <input id="points" value="100" />
+    <br /><br />
+    <label>Assignment Group</label>
+    <br />
+    <select>
       <option>ASSIGNMENT</option>
       <option>QUIZ</option>
       <option>EXAM</option>
@@ -23,6 +25,15 @@ This assignment describes how to install the development environment for creatin
     </select>
     <br />
     <br />
+
+    <label for="display-grade-as"> Display Grade as </label><br />
+    <select id="display-grade-as">
+      <option value="PERCENTAGE">Comedy</option>
+      <option value="DRAMA">Drama</option>
+      <option selected value="SCIFI">Science Fiction</option>
+      <option value="FANTASY">Fantasy</option>
+    </select>
+
     <label>Online Entry Options</label><br />
     <label
       ><input type="checkbox" name="online-entry-options" />Text Entry</label
