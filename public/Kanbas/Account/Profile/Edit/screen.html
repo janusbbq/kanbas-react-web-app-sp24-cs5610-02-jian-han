@@ -36,7 +36,115 @@
               <li><a href="#"> Global Announcements</a></li>
             </ul>
           </td>
-          <td valign="top"></td>
+          <td valign="top">
+            <form
+              id="profile-screen"
+              action="/Kanbas/Account/Profile/screen.html"
+            >
+              <h1>Jose Annunziato</h1>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label
+                        >Name:*<input type="text" value="Jose Annunziato"
+                      /></label>
+                    </td>
+                    <td>
+                      <label
+                        >Pronouns:
+                        <select>
+                          <option>None</option>
+                        </select>
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <br />
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label>Title:<input type="text" /></label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h2>Contact</h2>
+              No registered services, you can add some on the
+              <a href="/Kanbas/Account/Settings/screen.html">settings</a> page.
+              <br />
+              <h2>Biography</h2>
+              <label
+                >Faculty, Software Engineer, AI, Space, and renewables
+                enthusiast.
+                <br />
+                <textarea cols="50" rows="4">
+        Faculty, Software Engineer, AI, Space, and renewables enthusiast.</textarea
+                >
+              </label>
+              <br />
+              <h2>Links</h2>
+              <ul>
+                <li>
+                  <label>
+                    <a href="https://www.youtube.com/">YouTube</a>
+                    Links to an external site.</label
+                  >
+                </li>
+              </ul>
+              <br />
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <h2>Title</h2>
+                    </td>
+                    <td>
+                      <h2>URL</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label><input type="text" value="YouTube" /> -></label>
+                    </td>
+                    <td>
+                      <label
+                        ><input type="text" value="https://www.youtube.com/" />
+                        Remove</label
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><button type="button">Add another link</button></td>
+                  </tr>
+                  <tr>
+                    <td><button type="button">Cancel</button></td>
+                    <td>
+                      <button id="profile-screen" type="submit">
+                        Save Profile
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button">Edit Profile</button>
+                    </td>
+                    <td>
+                      <button id="profile-screen" type="submit">
+                        Cancel Editing
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>
