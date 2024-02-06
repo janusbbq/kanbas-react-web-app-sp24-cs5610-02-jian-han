@@ -1,0 +1,52 @@
+.wd-kanbas-navigation {
+  background-color: black;
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  width: 80px;
+  min-width: 75px; /* Min width is 75 pixels */
+  max-width: 85px; /* Max width is 85 pixels */
+  text-align: center;
+}
+
+.wd-kanbas-navigation li {
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.wd-kanbas-navigation li.wd-active {
+  background-color: white;
+  text-align: center;
+}
+
+.wd-kanbas-navigation li.wd-active a {
+  color: red;
+  text-align: center;
+}
+
+.wd-kanbas-navigation a {
+  margin-top: 5;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wd-kanbas-navigation a:hover {
+  background-color: white;
+  color: red;
+}
+
+.wd-kanbas-navigation a i {
+  margin-top: 5;
+  text-align: center;
+  color: red;
+  font-size: 2em;
+}

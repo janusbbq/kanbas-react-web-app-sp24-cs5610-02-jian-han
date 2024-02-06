@@ -1,0 +1,124 @@
+.btn-secondary {
+  background-color: lightgray;
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: red;
+}
+
+.kanbas_navigation {
+  background-color: black;
+  width: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.kanbas_navigation_selected {
+  background-color: white;
+  width: 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.kanbas_navigation_icon {
+  color: red;
+}
+
+.kanbas_navigation_icon_user {
+  color: lightgray;
+}
+
+.kanbas_navigation_link {
+  padding: 10px;
+}
+
+.kanbas_navigation_link_selected {
+  padding: 10px;
+}
+
+.kanbas_navigation img {
+  width: 100%; /* Make the image fill the width of its container */
+  height: auto; /* Maintain the image's aspect ratio */
+}
+
+.kanbas_navigation_link a {
+  color: white;
+}
+
+.kanbas_navigation_link_selected a {
+  color: red;
+}
+
+.course_navigation {
+  text-align: left;
+  width: 190px;
+  background: white;
+  padding-left: 20px;
+  overflow-wrap: break-word;
+}
+
+.course_navigation_active a {
+  color: black;
+  border-left: 2px solid black;
+  padding-left: 8px;
+}
+
+.fa-bars {
+  color: red;
+  padding-right: 10px;
+}
+
+.header {
+  margin-left: 85px;
+  height: 30px;
+  display: flex;
+  padding-left: 10px;
+}
+
+.nav_and_main_content {
+  margin-left: 85px;
+  margin-top: 30px;
+  display: flex;
+}
+
+.main-content {
+  padding: 20px;
+  flex-grow: 2;
+}
+
+.separator {
+  margin-left: 85px;
+}
+
+.custom-table {
+  width: 1150px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  overflow-y: auto;
+}

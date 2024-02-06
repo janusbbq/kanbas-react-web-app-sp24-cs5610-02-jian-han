@@ -1,0 +1,37 @@
+.wd-status {
+  width: 230px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.wd-status i {
+  margin: 1;
+}
+
+.wd-status .list-group-item {
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: lightgray;
+  border: 1px solid gray !important;
+}
+
+.wd-status .list-group-item.come-up {
+  color: white;
+  background-color: white;
+  padding: none !important;
+  border: 0px;
+}
+
+.wd-status .list-group.come-up {
+  color: white;
+  background-color: white;
+  border: none;
+  padding: 0px;
+}
+
+.wd-status .list-group-item.come-up .card {
+  padding: 0px !important;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: none;
+}

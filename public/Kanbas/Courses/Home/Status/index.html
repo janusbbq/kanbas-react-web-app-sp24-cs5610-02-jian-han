@@ -1,34 +1,123 @@
 <html>
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Home/Status/index.css" />
+  </head>
   <body>
-    <h4>Course Status</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <button>Unpublish</button>
-          </td>
-          <td>
-            <button>Published</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <ul>
-      <li><a href="#">Import Existing Content</a></li>
-      <li><a href="#">Import From Commons</a></li>
-      <li><a href="#">Choose Home Page</a></li>
-      <li><a href="#">View Course Stream</a></li>
-      <li><a href="#">New Announcement</a></li>
-      <li><a href="#">New Analytics</a></li>
-      <li><a href="#">View Course Notifications</a></li>
-    </ul>
-    <h4>Coming Up</h4>
-    <a href="#">View Calendar</a>
-    <ul>
-      <li><a href="#">Lecture CS4550.12631.202410 Sep 7 at 11:45am</a></li>
-      <li><a href="#">Lecture CS4550.12631.202410 Sep 11 at 11:45am</a></li>
-      <li><a href="#">Lecture CS5610 06 SP23 Sep 11 at 6pm</a></li>
-    </ul>
+    <div class="wd-status">
+      <div class="row"><h5>Course Status</h5></div>
+      <div class="row">
+        <div class="col">
+          <button><i class="fa fa-ban"></i>Unpublish</button>
+        </div>
+        <div class="col">
+          <button>
+            <i class="fa fa-check-circle text-success"></i>Published
+          </button>
+        </div>
+      </div>
+      <br />
+      <ul class="list-group">
+        <li class="list-group-item">
+          <i class="fa fa-cloud-upload"></i
+          ><a href="#">Import Existing Content</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-share-alt"></i><a href="#">Import From Commons</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-home"></i><a href="#">Choose Home Page</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-rss"></i><a href="#">View Course Stream</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-bullhorn"></i><a href="#">New Announcement</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-bar-chart"></i><a href="#">New Analytics</a>
+        </li>
+        <li class="list-group-item">
+          <i class="fa fa-bell"></i><a href="#">View Course Notifications</a>
+        </li>
+      </ul>
+      <br />
+      <div class="row"><h5>To Do</h5></div>
+      <div class="row"><hr /></div>
+      <div class="card">
+        <div class="card-body">
+          <span
+            class="card-title"
+            style="text-decoration: none; color: Red; font-weight: bold"
+          >
+            Grade A1 -ENV + HTML
+          </span>
+          <p class="card-text">100 points · Sep 18 at 11:59pm</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5>Coming Up</h5>
+        </div>
+        <div class="col">
+          <i class="fa fa-calendar"></i>
+          <a href="#">View Calendar</a>
+        </div>
+      </div>
+      <div class="row"><hr /></div>
+
+      <ul class="list-group come-up">
+        <li class="list-group-item come-up">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-calendar"></i>
+              <a
+                class="card-title"
+                href="#"
+                style="text-decoration: none; color: Red; font-weight: bold"
+              >
+                Lecture
+              </a>
+              <p class="card-text">CS4550.12631.202410 Sep 7 at 11:45am</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item come-up">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-calendar"></i>
+              <a
+                class="card-title"
+                href="#"
+                style="text-decoration: none; color: Red; font-weight: bold"
+              >
+                C55610 06 SP23 Lecture
+              </a>
+              <p class="card-text">C54550.12631.202410Sep 11 at 6pm</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item come-up">
+          <div class="card">
+            <div class="card-body">
+              <i class="fa fa-calendar"></i>
+              <a
+                class="card-title"
+                href="#"
+                style="text-decoration: none; color: Red; font-weight: bold"
+              >
+                CS5610 Web DevelopmentSummer 1 2023 -LECTURE
+              </a>
+              <p class="card-text">C54550.12631202410Sep 11 at 7pm</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>

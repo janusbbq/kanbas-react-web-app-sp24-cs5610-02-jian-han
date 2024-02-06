@@ -1,0 +1,18 @@
+A1 SETUP
+Week 0 - SETUP - Week starting on Monday September 5th (9/5/2022) Module |
+Due Sep 18, 2022 at 11:59pm | 100 pts
+A2 HTML
+Week 1 - HTML - Week starting on Monday September 12th (9/12/2022) Module | 
+Due Sep 25, 2022 at 11:59pm | 100 pts
+A3 CSS
+Week 2 - CSS - Week starting on Monday September 19th (9/19/2022) Module | 
+Due Oct 2, 2022 at 11:59pm | 100 pts
+A4 BOOTSTRAP
+Week 3 - Bootstrap - Week starting on Monday September 26th (9/26/2022) Module | 
+Due Oct 10, 2022 at 11:59pm | 100 pts
+A5 JAVASCRIPT
+Week 4 - JavaScript - Week starting on Monday October 3rd (10/3/2022) Module | 
+Due Oct 16, 2022 at 11:59pm | 100 pts
+A6 REACT
+Week 5 - React & Routing - Week starting Monday October 10th (10/10/2022) Module | 
+Due Oct 23, 2022 at 11:59pm | 100 pts

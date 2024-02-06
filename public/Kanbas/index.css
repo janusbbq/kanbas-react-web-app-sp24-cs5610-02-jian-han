@@ -1,0 +1,357 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wd-flex-row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.wd-flex-grow-1 {
+  flex-grow: 1;
+}
+
+.wd-bg-color-black {
+  background-color: black;
+}
+
+.canvas-sidebar {
+  background-color: black;
+  width: 80px; /* Adjust the width within the specified range */
+  text-align: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.navbar-nav {
+  padding: 10px 0; /* Adjust the spacing as needed */
+  list-style-type: none;
+  margin: 0;
+}
+
+.nav-item {
+  padding: 7px 0; /* Adjust the spacing as needed */
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 7px 0; /* Adjust the spacing as needed */
+  text-align: center;
+}
+
+.nav-link span {
+  color: white;
+  font-size: 14px; /* Adjust the font size as needed */
+  display: block;
+}
+
+.nav-link i {
+  color: #d41b2c;
+  font-size: 18px; /* Adjust the font size as needed */
+  margin-bottom: 5px; /* Adjust the spacing as needed */
+}
+
+.nav-link.active {
+  background-color: white;
+  color: #b52828;
+}
+
+.nav-link.active span {
+  background-color: white;
+  color: #b52828;
+}
+
+/* .nav-link.active i {
+    color: white;
+} */
+
+.account-sidebar {
+  width: 190px; /* Adjust the width within the specified range */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 100px; /* Adjust this value to account for the Canvas Navigation Sidebar */
+  text-align: left; /* Left justify the link text */
+}
+
+.account-nav {
+  list-style-type: none;
+  padding: 20px 0; /* Adjust the spacing as needed */
+  margin: 0;
+}
+
+.account-nav-item {
+  padding: 15px 0; /* Adjust the spacing as needed */
+  position: relative;
+}
+
+.account-nav-link {
+  color: #b52828;
+  text-decoration: none;
+  display: block;
+  white-space: normal;
+  padding-left: 10px; /* Adjust the spacing as needed */
+  transition: all 0.3s ease;
+}
+
+.account-nav-link.active {
+  color: black;
+  border-left: 2px solid black;
+  padding-left: 8px; /* Adjust the spacing as needed */
+}
+
+/* Ensure long link text wraps */
+.account-nav-link.active,
+.account-nav-link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.profile-section {
+  margin: 10px 0px 10px 0px;
+}
+
+.profile-name {
+  padding-bottom: 20px;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #b52828;
+}
+
+.btn-primary.wd-btn-edit-profile {
+  background-color: #f5f5f5;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-primary.wd-btn-edit-profile:hover {
+  background-color: #e8e8e8;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.dashboard-title {
+  font-weight: lighter;
+}
+
+.dashboard-div {
+  width: 100%;
+  margin: 10px 10px 0 100px;
+  padding-right: 150px;
+  /* position: fixed;
+    top: 10px;
+    bottom: 0;
+    left: 100px; */ /* Adjust this value to account for the Canvas Navigation Sidebar */
+  /*right: 10px; */
+  text-align: left;
+}
+
+.published-course-title {
+  font-weight: normal;
+}
+
+.dashboard-courses {
+  margin-left: 10px;
+}
+
+.dashboard-card {
+  width: 260px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin: 0 30px 30px 0;
+}
+
+.card-title {
+  color: #315e8e;
+  font-size: 0.875rem;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: 4px;
+  color: #677179;
+}
+
+.card-text {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #677179;
+}
+
+.dashboard-course-card {
+  margin: 0 30px 30px 0;
+  width: 260px; /* Automatically adjust width */
+  height: auto; /* Automatically adjust height */
+  display: inline-block;
+}
+
+.home-div {
+  width: 100%;
+  margin: 10px 10px 0 130px;
+  padding-right: 20px;
+  text-align: left;
+}
+
+.home-button-panel {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.navbar.kanbas-top-bar {
+  margin-top: 30px;
+  padding: 0;
+  color: #b52828;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  width: auto;
+  line-height: 1.2;
+}
+
+.breadcrumb-home-text {
+  font-weight: normal;
+  font-size: 1.125rem;
+}
+
+.btn-primary.course-publish-dropdown {
+  background-color: #f5f5f5;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.btn-primary.course-publish-dropdown:hover {
+  background-color: #e8e8e8;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.modules-list {
+  margin: 20px 5px;
+}
+
+.course-status {
+  display: block;
+  white-space: nowrap;
+}
+
+.course-status-buttons {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.navbar.wd-kanbas-top-bar {
+  margin-left: 20px;
+  margin-top: 30px;
+  padding: 0;
+  color: #b52828;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: auto;
+  line-height: 1.2;
+}
+
+.btn-primary.wd-btn-kanbas-primary {
+  background-color: #f5f5f5;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-primary.wd-btn-kanbas-primary:hover {
+  background-color: #e8e8e8;
+  border-color: #c7cdd1;
+  color: black;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-danger.wd-btn-kanbas-danger {
+  background-color: #d41b2c;
+  border-color: #c7cdd1;
+  color: white;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-danger.wd-btn-kanbas-danger:hover {
+  background-color: #b52828;
+  border-color: #c7cdd1;
+  color: white;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-success.wd-btn-kanbas-success {
+  background-color: green;
+  border-color: #c7cdd1;
+  color: white;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.btn-success.wd-btn-kanbas-success:hover {
+  background-color: #b52828;
+  border-color: #c7cdd1;
+  color: white;
+  float: right;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-right: 5px;
+}
+
+.list-group.wd-home-list {
+  border-radius: 0px;
+}
+
+.list-group-item.wd-home-list-item {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.list-group-item.wd-home-list-item.wd-course-status-button {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
