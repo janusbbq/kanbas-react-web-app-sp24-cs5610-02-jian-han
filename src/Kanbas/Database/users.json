@@ -1,0 +1,162 @@
+[
+  {
+    "_id": "121",
+    "username": "spongebob",
+    "password": "patrick123",
+    "firstName": "SpongeBob",
+    "lastName": "SquarePants",
+    "email": "spongebob@bikinibottom.com",
+    "dob": "1999-05-01",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "122",
+    "username": "bugsbunny",
+    "password": "carrot123",
+    "firstName": "Bugs",
+    "lastName": "Bunny",
+    "email": "bugs@looneytunes.com",
+    "dob": "1940-07-27",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "123",
+    "username": "mickeymouse",
+    "password": "minnie123",
+    "firstName": "Mickey",
+    "lastName": "Mouse",
+    "email": "mickey@disney.com",
+    "dob": "1928-11-18",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "124",
+    "username": "donaldduck",
+    "password": "quack123",
+    "firstName": "Donald",
+    "lastName": "Duck",
+    "email": "donald@disney.com",
+    "dob": "1934-06-09",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "125",
+    "username": "scoobydoo",
+    "password": "mystery123",
+    "firstName": "Scooby",
+    "lastName": "Doo",
+    "email": "scooby@mysteryinc.com",
+    "dob": "1969-09-13",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "126",
+    "username": "homer_simpson",
+    "password": "doh123",
+    "firstName": "Homer",
+    "lastName": "Simpson",
+    "email": "homer@springfield.com",
+    "dob": "1956-05-12",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "127",
+    "username": "popeye",
+    "password": "spinach123",
+    "firstName": "Popeye",
+    "lastName": "Sailorman",
+    "email": "popeye@sailor.com",
+    "dob": "1929-01-17",
+    "role": "FACULTY"
+  },
+  {
+    "_id": "128",
+    "username": "spongebobfan",
+    "password": "pineapple123",
+    "firstName": "Sandy",
+    "lastName": "Cheeks",
+    "email": "sandy@bikinibottom.com",
+    "dob": "1982-07-14",
+    "role": "FACULTY"
+  },
+  {
+    "_id": "129",
+    "username": "daffyduck",
+    "password": "duck123",
+    "firstName": "Daffy",
+    "lastName": "Duck",
+    "email": "daffy@looneytunes.com",
+    "dob": "1937-04-17",
+    "role": "FACULTY"
+  },
+  {
+    "_id": "130",
+    "username": "tom_jerry",
+    "password": "chase123",
+    "firstName": "Tom",
+    "lastName": "Cat",
+    "email": "tom@house.com",
+    "dob": "1940-02-10",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "131",
+    "username": "peter_pan",
+    "password": "nevergrowup123",
+    "firstName": "Peter",
+    "lastName": "Pan",
+    "email": "peter@neverland.com",
+    "dob": "1904-12-27",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "132",
+    "username": "snoopy",
+    "password": "woodstock123",
+    "firstName": "Snoopy",
+    "lastName": "Beagle",
+    "email": "snoopy@peanuts.com",
+    "dob": "1950-10-04",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "133",
+    "username": "spongegar",
+    "password": "prehistoric123",
+    "firstName": "Spongegar",
+    "lastName": "Caveman",
+    "email": "spongegar@caveman.com",
+    "dob": "10,000 BC",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "134",
+    "username": "tweety",
+    "password": "sylvester123",
+    "firstName": "Tweety",
+    "lastName": "Bird",
+    "email": "tweety@looneytunes.com",
+    "dob": "1942-11-21",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "135",
+    "username": "dora",
+    "password": "backpack123",
+    "firstName": "Dora",
+    "lastName": "Explorer",
+    "email": "dora@explorer.com",
+    "dob": "2000-08-14",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "136",
+    "username": "shrek",
+    "password": "ogre123",
+    "firstName": "Shrek",
+    "lastName": "Ogre",
+    "email": "shrek@farfaraway.com",
+    "dob": "2001-04-22",
+    "role": "STUDENT"
+  }
+]

@@ -1,0 +1,14 @@
+.wd-status-container {
+  display: flex;
+  flex-direction: row;
+  width: 230px;
+  padding: 2px;
+}
+
+.wd-flex-grow-1 {
+  flex-grow: 1;
+  background-color: gainsboro;
+  border-color: lightgray;
+  border-radius: 3px;
+  border: 2px;
+}
