@@ -25,7 +25,7 @@ function KanbasNavigation() {
   ];
   const { pathname } = useLocation();
   return (
-    <ul className="wd-kanbas-navigation">
+    <ul className="wd-kanbas-navigation wd-page-height">
       <li>
         <a className="wd-n-text" href="http://northeastern.edu">
           N
@@ -38,7 +38,7 @@ function KanbasNavigation() {
         >
           <Link to={`/Kanbas/${link.label}`}>
             {" "}
-            <div
+            <span
               className={
                 link.label.includes("Account")
                   ? "account-icons"
@@ -46,7 +46,7 @@ function KanbasNavigation() {
               }
             >
               {link.icon}
-            </div>{" "}
+            </span>{" "}
             <div>{link.label}</div>{" "}
           </Link>
         </li>

@@ -1,13 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { courses } from "../Database";
-import { FaPencilAlt } from "react-icons/fa";
+import * as db from "../Database";
+import { FaPencilRuler } from "react-icons/fa";
+import { TbFilePencil } from "react-icons/tb";
 import "./index.css";
-function Dashboard() {
+function Dashboard({
+  courses,
+  course,
+  setCourse,
+  addNewCourse,
+  deleteCourse,
+  updateCourse,
+}: {
+  courses: any[];
+  course: any;
+  setCourse: (course: any) => void;
+  addNewCourse: () => void;
+  deleteCourse: (course: any) => void;
+  updateCourse: () => void;
+}) {
   return (
     <div className="p-4">
-      <h1>Dashboard</h1> <hr />
-      <h2>Published Courses (3)</h2> <hr />
+      <h1>Dashboard</h1>
+      <div className="wd-course-add-box">
+        <h5>New Course Information</h5>
+        <input
+          value={course.name}
+          className="form-control wd-add-item-padding"
+          onChange={(e) => setCourse({ ...course, name: e.target.value })}
+        />
+        <input
+          value={course.number}
+          className="form-control wd-add-item-padding"
+          onChange={(e) => setCourse({ ...course, number: e.target.value })}
+        />
+        <input
+          value={course.startDate}
+          className="form-control wd-add-item-padding"
+          type="date"
+          onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
+        />
+        <input
+          value={course.endDate}
+          className="form-control wd-add-item-padding"
+          type="date"
+          onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
+        />
+        <div className="wd-btn-move-right">
+          <button
+            className="btn wd-green-dashboard-btn wd-dashboard-btn-padding wd-add-item-padding"
+            onClick={addNewCourse}
+          >
+            Add
+          </button>
+          <button
+            className="btn btn-primary wd-dashboard-btn-padding wd-add-item-padding wd-blue-dashboard-btn"
+            onClick={updateCourse}
+          >
+            Update
+          </button>
+        </div>
+      </div>
+      <hr />
+      <h2>Published Courses ({courses.length})</h2> <hr />
       <div className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {courses.map((course) => (
@@ -28,15 +83,40 @@ function Dashboard() {
                       fontWeight: "bold",
                     }}
                   >
-                    {course.name}{" "}
+                    {course.number} {course.name}{" "}
                   </Link>
-                  <p className="card-text">{course.name}</p>
-                  <Link
-                    to={`/Kanbas/Courses/${course._id}/Home`}
-                    className="btn wd-dashboard-button"
-                  >
-                    <FaPencilAlt />
-                  </Link>
+                  <p className="card-text">
+                    {course.number}.{course._id} {course.name}
+                  </p>
+                  <div>
+                    <Link
+                      to={`/Kanbas/Courses/${course._id}/Home`}
+                      className="btn wd-dashboard-button"
+                    >
+                      <TbFilePencil className="wd-green-pencil" />
+                    </Link>
+                    <span className="wd-btn-move-right">
+                      <button
+                        className="btn btn-primary wd-dashboard-btn-padding wd-blue-dashboard-btn"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setCourse(course);
+                        }}
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        className="btn wd-red-dashboard-btn wd-dashboard-btn-padding"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          deleteCourse(course._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

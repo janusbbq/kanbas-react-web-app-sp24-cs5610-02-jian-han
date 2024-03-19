@@ -1,17 +1,31 @@
 import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { assignments } from "../../../Database";
+import { useSelector, useDispatch } from "react-redux";
 import "./index.css";
-import { FaCheckCircle, FaEllipsisV, FaPlusCircle } from "react-icons/fa";
+import {
+  addAssignment,
+  updateAssignment,
+  setAssignment,
+} from "../assignmentsReducer";
+import { KanbasState } from "../../../store";
+import { FaCircleCheck } from "react-icons/fa6";
 function AssignmentEditor() {
-  const { assignmentId } = useParams();
-  const assignment = assignments.find(
-    (assignment) => assignment._id === assignmentId
+  const assignment = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignment
   );
+  const assignmentList = useSelector(
+    (state: KanbasState) => state.assignmentsReducer.assignments
+  );
+  const dispatch = useDispatch();
   const { courseId } = useParams();
   const navigate = useNavigate();
   const handleSave = () => {
     console.log("Actually saving assignment TBD in later assignments");
+    if (assignmentList.filter((a) => a._id === assignment._id).length > 0) {
+      dispatch(updateAssignment(assignment));
+    } else {
+      dispatch(addAssignment({ ...assignment, course: courseId }));
+    }
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
   return (
@@ -20,11 +34,9 @@ function AssignmentEditor() {
         <div className="wd-align-right">
           <strong className="text-success">
             {" "}
-            <FaCheckCircle /> Published &emsp;
+            <FaCircleCheck /> Published &emsp;
           </strong>
-          <button className="wd-standard-button">
-            <FaEllipsisV />
-          </button>
+          <button className="wd-standard-button">⋮</button>
         </div>
         <hr />
         <div className="mb-3">
@@ -35,15 +47,22 @@ function AssignmentEditor() {
             className="form-control"
             id="assignment-name-input"
             value={assignment?.title}
+            onChange={(e) =>
+              dispatch(setAssignment({ ...assignment, title: e.target.value }))
+            }
           />
         </div>
         <div className="mb-3">
-          <textarea className="form-control" id="assignment-text">
-            This assignment describes how to install the development environment
-            for creating and working with Web applications we will be developing
-            this semester. We will add new content every week, pushing the code
-            to a GitHub source repository, and then deploying the content to a
-            remote server hosted on Netlify.
+          <textarea
+            className="form-control"
+            id="assignment-text"
+            onChange={(e) =>
+              dispatch(
+                setAssignment({ ...assignment, description: e.target.value })
+              )
+            }
+          >
+            {assignment?.description}
           </textarea>
         </div>
         <div style={{ textAlign: "center" }}>
@@ -60,6 +79,11 @@ function AssignmentEditor() {
                 className="form-control"
                 placeholder={assignment?.points}
                 id="points-input"
+                onChange={(e) =>
+                  dispatch(
+                    setAssignment({ ...assignment, points: e.target.value })
+                  )
+                }
               />{" "}
             </div>
           </div>
@@ -111,7 +135,112 @@ function AssignmentEditor() {
           </div>
           <div className="mb-3 row">
             <div className="col-3">&emsp;</div>
-            <div className="col-7"></div>
+            <div className="col-7">
+              <hr />
+            </div>
+          </div>
+          <div className="mb-3 row">
+            <div className="col-3 wd-align-text-right">Submission Type</div>
+            <div className="col-7 card">
+              <div className="col-8 wd-inside-form-top">
+                <select className="form-control">
+                  <option>Online</option>
+                  <option>In Person</option>
+                </select>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <label>
+                  <strong>Online Entry Options</strong>
+                </label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="TEXTENTRY"
+                  name="submission-check"
+                  id="text-entry"
+                />
+                <label htmlFor="text-entry">&nbsp;Text Entry</label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="WEBSITEURL"
+                  name="submission-check"
+                  id="website-URL"
+                />
+                <label htmlFor="website-URL">&nbsp;Website URL</label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="MEDIA"
+                  name="submission-check"
+                  id="media-recordings"
+                />
+                <label htmlFor="media-recordings">&nbsp;Media Recordings</label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="ANNOTATION"
+                  name="submission-check"
+                  id="student-annotation"
+                />
+                <label htmlFor="student-annotation">
+                  &nbsp;Student Annotation
+                </label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="FILEUPLOAD"
+                  name="submission-check"
+                  id="file-uploads"
+                />
+                <label htmlFor="file-uploads">&nbsp;File Uploads</label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                &emsp;
+                <input
+                  type="checkbox"
+                  value="FILEUPLOAD"
+                  name="submission-check"
+                  id="file-uploads"
+                />
+                <label htmlFor="file-uploads">
+                  &nbsp;Restrict Upload File Types
+                </label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <label>
+                  <strong>Group Assignments</strong>
+                </label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <input
+                  type="checkbox"
+                  value="ENABLEGROUP"
+                  name="group-assignment"
+                  id="enable-group"
+                />
+                <label htmlFor="enable-group">&nbsp;Enable Groups</label>
+              </div>
+              <div className="col-8 wd-inside-form-card">
+                <label>
+                  <strong>Peer Reviews</strong>
+                </label>
+              </div>
+              <div className="col-8 wd-inside-form-bottom">
+                <input
+                  type="checkbox"
+                  value="PEERREVIEW"
+                  name="peer-reviews"
+                  id="peer-review"
+                />
+                <label htmlFor="peer-review">&nbsp;Add Peer Review</label>
+              </div>
+            </div>
           </div>
           <div className="mb-3 row">
             <div className="col-3 wd-align-text-right">Assign</div>
@@ -138,6 +267,11 @@ function AssignmentEditor() {
                   className="form-control"
                   type="date"
                   value={assignment?.due}
+                  onChange={(e) =>
+                    dispatch(
+                      setAssignment({ ...assignment, due: e.target.value })
+                    )
+                  }
                 />
               </div>
               <div className="col-11 wd-inside-form-card">
@@ -162,6 +296,14 @@ function AssignmentEditor() {
                       type="date"
                       id="available-from"
                       value={assignment?.start}
+                      onChange={(e) =>
+                        dispatch(
+                          setAssignment({
+                            ...assignment,
+                            start: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                   <div className="col-6">
@@ -169,16 +311,18 @@ function AssignmentEditor() {
                       className="form-control"
                       type="date"
                       id="until"
-                      value={assignment?.due}
+                      value={assignment?.end}
+                      onChange={(e) =>
+                        dispatch(
+                          setAssignment({ ...assignment, end: e.target.value })
+                        )
+                      }
                     />
                   </div>
                 </div>
               </div>
               <div className="card-footer">
-                <button className="btn btn-secondary form-control">
-                  <FaPlusCircle />
-                  Add
-                </button>
+                <i className="fa fa-plus ms-2"></i> Add
               </div>
             </div>
           </div>

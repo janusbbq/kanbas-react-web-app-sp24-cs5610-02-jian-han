@@ -1,0 +1,11 @@
+.wd-kanbas-navi-height {
+  height: 100% !important;
+  position: fixed;
+  overflow-y: auto;
+}
+
+/* CSS class for horizontally centering content at the top */
+.top-centered-content {
+  text-align: center;
+  width: 100%;
+}

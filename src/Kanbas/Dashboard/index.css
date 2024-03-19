@@ -1,4 +1,44 @@
 .wd-dashboard-button {
-    background-color: transparent;
-    color: grey;
+  background-color: transparent;
+  color: grey;
+}
+
+.wd-course-add-box {
+  border: 3px solid lightgray;
+  border-radius: 12px;
+  padding: 5px;
+  width: 320px;
+}
+
+.wd-red-dashboard-btn {
+  color: white;
+  background-color: #b52828;
+}
+
+.wd-green-dashboard-btn {
+  color: white;
+  background-color: green;
+}
+
+.wd-btn-move-right {
+  text-align: right;
+}
+
+.wd-dashboard-btn-padding {
+  margin-inline: 3px;
+}
+
+.wd-add-item-padding {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.wd-blue-dashboard-btn {
+  color: white;
+  background-color: blue;
+}
+
+.wd-green-pencil {
+  font-size: 30px;
+  color: green;
 }

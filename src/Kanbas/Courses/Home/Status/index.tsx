@@ -1,76 +1,103 @@
 import "./index.css";
 import {
-  FaTimes,
-  FaCheckCircle,
-  FaFileImport,
-  FaCircle,
-  FaChartBar,
   FaBullhorn,
-  FaBell,
+  FaRegTimesCircle,
+  FaFileImport,
+  FaChartBar,
+  FaRegBell,
   FaCalendar,
-  FaExclamation,
 } from "react-icons/fa";
-
+import { FaCircleCheck, FaCircleExclamation } from "react-icons/fa6";
+import { FiTarget } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import { assignments } from "../../../Database";
 function Status() {
+  const { courseId } = useParams();
+  const assignment = assignments.find(
+    (assignment) => assignment.course === courseId
+  );
   return (
     <>
       <h3>Course Status</h3>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1">
-          <FaTimes className="icon" /> Unpublish
+          <FaRegTimesCircle className="wd-course-status-icon" /> Unpublish
         </button>
         <button className="wd-flex-grow-1 wd-green-button">
-          <FaCheckCircle className="text-success" /> Publish
+          <FaCircleCheck /> Publish
         </button>
       </div>
       <br />
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaFileImport className="icon" /> Import Existing Content
+          <FaFileImport className="wd-course-status-icon" /> Import Existing
+          Content
         </button>
       </div>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaCircle className="icon" /> Choose Home Page
+          <FiTarget className="wd-course-status-icon" /> Choose Home Page
         </button>
       </div>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaChartBar className="icon" /> View Course Stream
+          <FaChartBar className="wd-course-status-icon" /> View Course Stream
         </button>
       </div>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaBullhorn className="icon" /> New Announcement
+          <FaBullhorn className="wd-course-status-icon" /> New Announcement
         </button>
       </div>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaChartBar className="icon" /> New Analytics
+          <FaChartBar className="wd-course-status-icon" /> New Analytics
         </button>
       </div>
       <div className="wd-status-container">
         <button className="wd-flex-grow-1 wd-align-button-text">
-          <FaBell className="icon" /> View Course Notifications
+          <FaRegBell className="wd-course-status-icon" /> View Course
+          Notifications
         </button>
       </div>
 
       <div className="wd-course-status-info-container ">
         <h5>To Do</h5>
-        <hr />
       </div>
       <div className="wd-status-container">
         <a className="wd-red-link" href="#">
-          <FaExclamation className="icon" /> Grade A1 - ENV + HTML
+          <FaCircleExclamation className="wd-course-status-icon" /> Grade{" "}
+          {assignment?.title}
         </a>
       </div>
-      <div className="wd-status-container">100 pts · Sept 18 at 11:59pm</div>
+      <div className="wd-status-container">
+        {assignment?.points} pts | {assignment?.due} 11:59pm
+      </div>
+      <div className="wd-course-status-info-container">
+        <h5 className="wd-flex-grow-2">Coming Up </h5>
+        <span className="wd-flex-grow-2">
+          <FaCalendar className="wd-course-status-icon" />{" "}
+          <a className="wd-red-link" href="#">
+            {" "}
+            View{" "}
+          </a>
+        </span>
+      </div>
+      <div className="wd-status-container">
+        <FaCalendar className="wd-course-status-icon" />{" "}
+        <a className="wd-red-link" href="#">
+          &emsp;Lecture
+        </a>
+      </div>
+      <div className="wd-status-container">{courseId}.12631.202410</div>
+      <div className="wd-status-container">{assignment?.start} at 6pm</div>
+      <br />
       <div className="wd-status-container">
         <a className="wd-red-link" href="#">
-          <FaExclamation className="icon" /> Grade A2 - CSS +BOOTSTRAP
+          {" "}
+          More in the next week...
         </a>
       </div>
-      <div className="wd-status-container">100 points · Oct 2 at 11:59pm</div>
     </>
   );
 }

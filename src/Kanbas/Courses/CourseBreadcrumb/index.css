@@ -1,0 +1,13 @@
+.wd-dropdown-navigation {
+  list-style: none;
+}
+
+.wd-dropdown-navigation a {
+  color: #b52828;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.wd-account-navi-icon {
+  color: lightgray;
+}

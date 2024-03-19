@@ -7,30 +7,22 @@
 }
 
 .wd-inside-form-card {
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   text-align: left;
-  padding-inline: 8px;
+  padding-inline: 12px;
 }
 
 .wd-inside-form-top {
-  padding-top: 20px;
-  padding-bottom: 6px;
+  padding-top: 18px;
+  padding-bottom: 5px;
   text-align: left;
-  padding-inline: 8px;
+  padding-inline: 10px;
 }
 
 .wd-inside-form-bottom {
-  padding-top: 6px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 18px;
   text-align: left;
-  padding-inline: 8px;
-}
-
-.card-footer {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  text-align: center;
-  padding-inline: 8px;
-  margin: 6px;
+  padding-inline: 12px;
 }
