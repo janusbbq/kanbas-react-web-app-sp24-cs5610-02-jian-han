@@ -1,4 +1,4 @@
-import ModuleList from "../Modules/ModuleList";
+import ModuleList from "../Modules/list";
 import "./index.css";
 import Status from "./Status";
 

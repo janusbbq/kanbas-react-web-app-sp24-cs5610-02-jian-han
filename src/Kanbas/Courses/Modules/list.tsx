@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
-import { modules } from "../../Database";
 import {
   FaEllipsisV,
   FaCheckCircle,
@@ -15,7 +14,9 @@ import {
   deleteModule,
   updateModule,
   setModule,
-} from "./modulesReducer";
+  setModules,
+} from "./reducer";
+import * as client from "./client";
 import { KanbasState } from "../../store";
 function ModuleList() {
   const { courseId } = useParams();
@@ -26,6 +27,25 @@ function ModuleList() {
     (state: KanbasState) => state.modulesReducer.module
   );
   const dispatch = useDispatch();
+  useEffect(() => {
+    client
+      .findModulesForCourse(courseId)
+      .then((modules) => dispatch(setModules(modules)));
+  }, [courseId]);
+  const handleAddModule = () => {
+    client.createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+  const handleDeleteModule = (moduleId: string) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+  const handleUpdateModule = async () => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
   const [selectedModule, setSelectedModule] = useState(modulesList[0]);
   return (
     <>
@@ -36,17 +56,12 @@ function ModuleList() {
           <option>✔ Publish All</option>
           <option>Unpublish All</option>
         </select>
-        <button
-          className="wd-red-button"
-          onClick={() => dispatch(addModule({ ...module, course: courseId }))}
-        >
-          + Module
-        </button>
+        <button className="wd-red-button">+ Module</button>
         <button className="wd-standard-button">⋮</button>
       </div>
       <hr />
       <div className="wd-add-module">
-        <h6>New Module</h6>
+        <h6>New Module Information</h6>
         <input
           value={module.name}
           className="form-control wd-add-spacing"
@@ -62,16 +77,10 @@ function ModuleList() {
           }
         />
         <div className="wd-align-right">
-          <button
-            className="wd-add-button"
-            onClick={() => dispatch(addModule({ ...module, course: courseId }))}
-          >
+          <button className="wd-add-button" onClick={handleAddModule}>
             Add
           </button>
-          <button
-            className="wd-edit-button"
-            onClick={() => dispatch(updateModule(module))}
-          >
+          <button className="wd-edit-button" onClick={handleUpdateModule}>
             Update
           </button>
         </div>
@@ -87,12 +96,11 @@ function ModuleList() {
             >
               <div>
                 <FaEllipsisV className="me-2" />
-                <FaEllipsisV className="me-2" />
                 {module.name}
                 <span className="float-end">
                   <button
                     className="wd-red-delete-button"
-                    onClick={() => dispatch(deleteModule(module._id))}
+                    onClick={() => handleDeleteModule(module._id)}
                   >
                     Delete
                   </button>
@@ -107,7 +115,7 @@ function ModuleList() {
                   <FaEllipsisV className="ms-2" />
                 </span>
               </div>
-              {selectedModule._id === module._id && (
+              {selectedModule && selectedModule?._id === module._id && (
                 <ul className="list-group">
                   {module.lessons?.map((lesson: any) => (
                     <li className="list-group-item ">

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCheckCircle, FaEllipsisV, FaPlusCircle } from "react-icons/fa";
 import { TbFilePencil } from "react-icons/tb";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./index.css";
 import { KanbasState } from "../../store";
-import { setAssignment, deleteAssignment } from "./assignmentsReducer";
+import { setAssignment, deleteAssignment, setAssignments } from "./reducer";
+import * as client from "./client";
 function Assignments() {
   const { courseId } = useParams();
   const assignmentList = useSelector(
@@ -15,11 +16,16 @@ function Assignments() {
     (state: KanbasState) => state.assignmentsReducer.assignment
   );
   const dispatch = useDispatch();
+  useEffect(() => {
+    client
+      .findAssignmentsForCourse(courseId)
+      .then((assignments) => dispatch(setAssignments(assignments)));
+  }, [courseId]);
   const handleDelete = (assignmentID: any) => {
-    if (
-      window.confirm("Are you sure that you want to remove this assignment?")
-    ) {
-      dispatch(deleteAssignment(assignmentID));
+    if (window.confirm("Do you want to delete this assignment?")) {
+      client.deleteAssignment(assignmentID).then((status) => {
+        dispatch(deleteAssignment(assignmentID));
+      });
     }
   };
   return (
@@ -36,6 +42,12 @@ function Assignments() {
                   setAssignment({
                     ...assignment,
                     _id: new Date().getTime().toString(),
+                    title: "New Assignment",
+                    description: "New Assignment Description",
+                    points: 100,
+                    start: "2024-01-01",
+                    due: "2024-12-31",
+                    end: "2025-01-01",
                   })
                 )
               }
@@ -50,7 +62,6 @@ function Assignments() {
       <ul className="list-group wd-modules">
         <li className="list-group-item">
           <div>
-            <FaEllipsisV className="me-2" />
             <FaEllipsisV className="me-2" />
             <strong>🞃 Assignments</strong>
             <span className="float-end">

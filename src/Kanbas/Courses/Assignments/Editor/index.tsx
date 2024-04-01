@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./index.css";
@@ -6,9 +6,11 @@ import {
   addAssignment,
   updateAssignment,
   setAssignment,
-} from "../assignmentsReducer";
+  setAssignments,
+} from "../reducer";
 import { KanbasState } from "../../../store";
 import { FaCircleCheck } from "react-icons/fa6";
+import * as client from "../client";
 function AssignmentEditor() {
   const assignment = useSelector(
     (state: KanbasState) => state.assignmentsReducer.assignment
@@ -18,13 +20,22 @@ function AssignmentEditor() {
   );
   const dispatch = useDispatch();
   const { courseId } = useParams();
+  useEffect(() => {
+    client
+      .findAssignmentsForCourse(courseId)
+      .then((assignments) => dispatch(setAssignments(assignments)));
+  }, [courseId]);
   const navigate = useNavigate();
-  const handleSave = () => {
-    console.log("Actually saving assignment TBD in later assignments");
+  const handleSave = async () => {
     if (assignmentList.filter((a) => a._id === assignment._id).length > 0) {
+      console.log("Does this happen");
+      const status = await client.updateAssignment(assignment);
       dispatch(updateAssignment(assignment));
     } else {
-      dispatch(addAssignment({ ...assignment, course: courseId }));
+      console.log("Or does this");
+      client.createAssignment(courseId, assignment).then((assignment) => {
+        dispatch(addAssignment(assignment));
+      });
     }
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
