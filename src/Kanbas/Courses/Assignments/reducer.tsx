@@ -6,9 +6,9 @@ const initialState: any = {
     title: "New Assignment",
     description: "New Assignment Description",
     points: 100,
-    start: "2024-01-01",
-    due: "2024-12-31",
-    end: "2025-01-01",
+    start: "2024-01-08",
+    due: "2024-01-15",
+    end: "2024-01-15",
   },
 };
 
@@ -29,11 +29,7 @@ const assignmentsSlice = createSlice({
     },
     updateAssignment: (state, action) => {
       state.assignments = state.assignments.map((assignment: { _id: any }) => {
-        console.log("!!" + assignment._id);
-        console.log("!!" + action.payload._id);
-        console.log("!!" + action.payload.title);
         if (assignment._id === action.payload._id) {
-          console.log(action.payload);
           return action.payload;
         } else {
           return assignment;
@@ -53,4 +49,5 @@ export const {
   setAssignment,
   setAssignments,
 } = assignmentsSlice.actions;
+
 export default assignmentsSlice.reducer;

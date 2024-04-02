@@ -26,11 +26,14 @@ function AssignmentEditor() {
       .then((assignments) => dispatch(setAssignments(assignments)));
   }, [courseId]);
   const navigate = useNavigate();
-  const handleSave = async () => {
+
+  const handleSave = () => {
     if (assignmentList.filter((a) => a._id === assignment._id).length > 0) {
       console.log("Does this happen");
-      const status = await client.updateAssignment(assignment);
-      dispatch(updateAssignment(assignment));
+      console.log(assignment._id + "We are consoling assignment");
+      client.updateAssignment(assignment).then(() => {
+        dispatch(updateAssignment(assignment));
+      });
     } else {
       console.log("Or does this");
       client.createAssignment(courseId, assignment).then((assignment) => {
