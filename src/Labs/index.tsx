@@ -22,8 +22,6 @@ function Labs() {
           <Route path="/a4" element={<Assignment4 />} />
           <Route path="/a5" element={<Assignment5 />} />
         </Routes>
-        {/* <Assignment3 />
-        <Assignment4 /> */}
       </div>
     </Provider>
   );
