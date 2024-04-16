@@ -23,7 +23,7 @@ function Dashboard({
     <div className="p-4">
       <h1>Dashboard</h1>
       <div className="wd-course-add-box">
-        <h5>New Course Information</h5>
+        <h5>Course</h5>
         <input
           value={course.name}
           className="form-control wd-add-item-padding"
@@ -34,12 +34,14 @@ function Dashboard({
           className="form-control wd-add-item-padding"
           onChange={(e) => setCourse({ ...course, number: e.target.value })}
         />
+        Start Date:
         <input
           value={course.startDate}
           className="form-control wd-add-item-padding"
           type="date"
           onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
         />
+        End Date:
         <input
           value={course.endDate}
           className="form-control wd-add-item-padding"
@@ -54,7 +56,7 @@ function Dashboard({
             Add
           </button>
           <button
-            className="btn btn-primary wd-dashboard-btn-padding wd-add-item-padding wd-blue-dashboard-btn"
+            className="btn btn-primary wd-dashboard-btn-padding wd-add-item-padding"
             onClick={updateCourse}
           >
             Update
@@ -66,7 +68,7 @@ function Dashboard({
       <div className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {courses.map((course) => (
-            <div key={course._id} className="col" style={{ width: 300 }}>
+            <div key={course.id} className="col" style={{ width: 300 }}>
               <div className="card">
                 <img
                   src={`/images/${course.image}`}
@@ -76,7 +78,7 @@ function Dashboard({
                 <div className="card-body">
                   <Link
                     className="card-title"
-                    to={`/Kanbas/Courses/${course._id}/Home`}
+                    to={`/Kanbas/Courses/${course.id}/Home`}
                     style={{
                       textDecoration: "none",
                       color: "dodgerblue",
@@ -86,18 +88,18 @@ function Dashboard({
                     {course.number} {course.name}{" "}
                   </Link>
                   <p className="card-text">
-                    {course.number}.{course._id} {course.name}
+                    {course.number}.{course.id} {course.name}
                   </p>
                   <div>
                     <Link
-                      to={`/Kanbas/Courses/${course._id}/Home`}
+                      to={`/Kanbas/Courses/${course.id}/Home`}
                       className="btn wd-dashboard-button"
                     >
-                      <TbFilePencil className="wd-green-pencil" />
+                      <TbFilePencil style={{ fontSize: 25 }} />
                     </Link>
                     <span className="wd-btn-move-right">
                       <button
-                        className="btn btn-primary wd-dashboard-btn-padding wd-blue-dashboard-btn"
+                        className="btn btn-primary wd-dashboard-btn-padding"
                         onClick={(event) => {
                           event.preventDefault();
                           setCourse(course);
@@ -110,7 +112,7 @@ function Dashboard({
                         className="btn wd-red-dashboard-btn wd-dashboard-btn-padding"
                         onClick={(event) => {
                           event.preventDefault();
-                          deleteCourse(course._id);
+                          deleteCourse(course.id);
                         }}
                       >
                         Delete
