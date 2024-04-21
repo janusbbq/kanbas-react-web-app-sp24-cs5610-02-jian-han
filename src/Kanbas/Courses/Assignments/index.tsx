@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./index.css";
 import { KanbasState } from "../../store";
-import { setAssignment, deleteAssignment } from "./assignmentsReducer";
+import { setAssignment, deleteAssignment } from "./AssignmentsReducer";
 function Assignments() {
   const { courseId } = useParams();
   const assignmentList = useSelector(

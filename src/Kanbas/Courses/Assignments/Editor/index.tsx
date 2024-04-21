@@ -6,7 +6,7 @@ import {
   addAssignment,
   updateAssignment,
   setAssignment,
-} from "../assignmentsReducer";
+} from "../AssignmentsReducer";
 import { KanbasState } from "../../../store";
 import { FaCircleCheck } from "react-icons/fa6";
 function AssignmentEditor() {
