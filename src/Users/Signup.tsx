@@ -1,61 +1,33 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as client from "./client";
-
-export default function RegisterScreen() {
-  const navigate = useNavigate();
+import "./index.css";
+export default function Signup() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
-  const register = async () => {
+  const navigate = useNavigate();
+  const signup = async () => {
     try {
-      const newUser = await client.registerUser(user);
-      console.log(newUser);
-      navigate("/Kanbas/Account/profile");
-    } catch (e: any) {
-      setError(e.response.data);
-      console.log(e.response.data);
+      await client.signup(user);
+      navigate("/Kanbas/Account/Profile");
+    } catch (err: any) {
+      setError(err.response.data.message);
     }
   };
-
   return (
     <div>
-      <div
-        className="card mx-auto my-auto text-center"
-        style={{ width: "50%" }}
-      >
-        <div className="card-body">
-          <h2 className="card-title text-success">Sign Up</h2>
-          <p className="card-text">Unlock your access to Kanbas...</p>
-          {error && (
-            <div className="alert alert-danger mb-2 mt-2"> {error}</div>
-          )}
-          <input
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
-            className="form-control m-2 mb-4"
-            placeholder="Username"
-          />
-          <input
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            className="form-control m-2 mb-4"
-            placeholder="Password"
-            type={"password"}
-          />
-
-          <div className="d-flex justify-content-between">
-            <button onClick={register} className="btn btn-success w-50 m-2">
-              Register
-            </button>
-            <Link
-              to="/Kanbas/Account/login"
-              className="btn btn-outline-primary w-50 m-2"
-            >
-              Login
-            </Link>
-          </div>
-        </div>
-      </div>
+      <h1>Signup</h1>
+      {error && <div>{error}</div>}
+      <label htmlFor="username" className="label-space">Username:</label>
+      <input id="username" className = "input-space input-width input-corners" value={user.username} onChange={(e) => setUser({
+          ...user, username: e.target.value })} />
+           <br />
+        <label htmlFor="password" className="label-space">Password:</label>
+      <input id="password" className = "input-space input-width input-corners" value={user.password} onChange={(e) => setUser({
+          ...user, password: e.target.value })} />
+          <br />
+      <button className = "btn btn-primary wd-button-space" onClick={signup}> Signup </button>
+      <Link to={`/Kanbas/Account/Signin`}><button className = "btn btn-primary wd-button-space">Go to Signin</button></Link>
     </div>
   );
 }

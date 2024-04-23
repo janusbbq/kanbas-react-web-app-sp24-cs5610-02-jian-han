@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-import {
-  FaEllipsisV,
-  FaCheckCircle,
-  FaPlusCircle,
-  FaExternalLinkAlt,
-  FaLink,
-} from "react-icons/fa";
+import { FaEllipsisV, FaCheckCircle, FaPlusCircle, FaExternalLinkAlt, FaLink } from "react-icons/fa";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -20,18 +14,19 @@ import * as client from "./client";
 import { KanbasState } from "../../store";
 function ModuleList() {
   const { courseId } = useParams();
-  const modulesList = useSelector(
-    (state: KanbasState) => state.modulesReducer.modules
-  );
-  let module = useSelector((state: KanbasState) => state.modulesReducer.module);
+  const modulesList = useSelector((state: KanbasState) =>
+    state.modulesReducer.modules);
+  let module = useSelector((state: KanbasState) =>
+    state.modulesReducer.module);
   const dispatch = useDispatch();
   useEffect(() => {
-    client
-      .findModulesForCourse(courseId)
-      .then((modules) => dispatch(setModules(modules)));
+    client.findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+      );
   }, [courseId]);
   const handleAddModule = () => {
-    module = { ...module, id: Date.now() };
+    module = {...module, id: Date.now()};
     console.log(module.id);
     console.log(module._id);
     client.createModule(courseId, module).then((module) => {
@@ -63,55 +58,40 @@ function ModuleList() {
       <hr />
       <div className="wd-add-module">
         <h6>New Module Information</h6>
-        <input
-          value={module.name}
+        <input value={module.name}
           className="form-control wd-add-spacing"
-          onChange={(e) =>
-            dispatch(setModule({ ...module, name: e.target.value }))
+          onChange={(e) => dispatch(setModule({ ...module, name: e.target.value }))
           }
         />
-        <textarea
-          value={module.description}
+        <textarea value={module.description}
           className="form-control"
-          onChange={(e) =>
-            dispatch(setModule({ ...module, description: e.target.value }))
+          onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))
           }
         />
         <div className="wd-align-right">
-          <button className="wd-add-button" onClick={handleAddModule}>
-            Add
-          </button>
-          <button
-            className="wd-edit-button"
-            onClick={() => handleUpdateModule()}
-          >
+          <button className="wd-add-button"
+            onClick={handleAddModule}>Add</button>
+          <button className="wd-edit-button" onClick={() => handleUpdateModule()}>
             Update
           </button>
         </div>
       </div>
       <ul className="list-group wd-modules">
-        {modulesList
-          .filter((module) => module.course === courseId)
+        {modulesList.filter((module) => module.course === courseId)
           .map((module, index) => (
-            <li
-              key={index}
+            <li key={index}
               className="list-group-item"
-              onClick={() => setSelectedModule(module)}
-            >
+              onClick={() => setSelectedModule(module)}>
               <div>
                 <FaEllipsisV className="me-2" />
                 {module.name}
                 <span className="float-end">
-                  <button
-                    className="wd-red-delete-button"
-                    onClick={() => handleDeleteModule(module._id)}
-                  >
+                  <button className="wd-red-delete-button"
+                    onClick={() => handleDeleteModule(module._id)}>
                     Delete
                   </button>
-                  <button
-                    className="wd-edit-button"
-                    onClick={() => dispatch(setModule(module))}
-                  >
+                  <button className="wd-edit-button"
+                    onClick={() => dispatch(setModule(module))}>
                     Edit
                   </button>
                   <FaCheckCircle className="text-success" />
@@ -122,24 +102,27 @@ function ModuleList() {
               {selectedModule && selectedModule?.id === module.id && (
                 <ul className="list-group">
                   {module.lessons?.map((lesson: any) => (
-                    <li className="list-group-item ">
+
+                    <li className="list-group-item "  >
                       <FaEllipsisV className="me-2" />
-                      {lesson.extlink ? (
+                      {lesson.extlink ?
                         <>
                           <FaLink className="me-2 text-success" />
                           <a href={lesson.extlink} className="wd-red-link">
                             {lesson.name} <FaExternalLinkAlt className="me-2" />
-                          </a>
-                        </>
-                      ) : (
-                        lesson.name
-                      )}
+                          </a></> : lesson.name}
                       <span className="float-end">
                         <FaCheckCircle className="text-success" />
                         <FaEllipsisV className="ms-2" />
                       </span>
+
                     </li>
-                  ))}
+
+                  )
+
+                  )
+                  }
+
                 </ul>
               )}
             </li>
