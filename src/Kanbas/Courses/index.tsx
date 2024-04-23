@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { courses } from "../../Kanbas/Database";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
@@ -12,19 +10,18 @@ import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import CourseBreadcrumb from "./CourseBreadcrumb/breadcrumb";
-const API_BASE = process.env.REACT_APP_API_BASE;
+import * as client from "./client";
 
-function Courses() {
+function Courses({ courses }: { courses: any[] }) {
   const { courseId } = useParams();
-  // const COURSES_API = "http://localhost:4000/api/courses";
-  const COURSES_API = `${API_BASE}/api/courses`;
   const [course, setCourse] = useState<any>({ _id: "" });
-  const findCourseById = async (courseId?: string) => {
-    const response = await axios.get(`${COURSES_API}/${courseId}`);
-    setCourse(response.data);
+  const fetchCourse = async (courseId?: string) => {
+    const course = await client.fetchCourseByID(courseId);
+    setCourse(course);
   };
+
   useEffect(() => {
-    findCourseById(courseId);
+    fetchCourse(courseId);
   }, [courseId]);
 
   return (

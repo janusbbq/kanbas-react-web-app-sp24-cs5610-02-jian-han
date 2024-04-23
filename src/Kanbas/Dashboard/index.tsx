@@ -1,24 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import * as db from "../Database";
-import { FaPencilRuler } from "react-icons/fa";
 import { TbFilePencil } from "react-icons/tb";
 import "./index.css";
-function Dashboard({
-  courses,
-  course,
-  setCourse,
-  addNewCourse,
-  deleteCourse,
-  updateCourse,
-}: {
-  courses: any[];
-  course: any;
-  setCourse: (course: any) => void;
-  addNewCourse: () => void;
-  deleteCourse: (course: any) => void;
-  updateCourse: () => void;
-}) {
+import * as client from "../Courses/client";
+
+function Dashboard() {
+  const [courses, setCourses] = useState([]);
+  const [course, setCourse] = useState({} as any);
+
+  const fetchAllCourses = async () => {
+    const courses = await client.fetchAllCourses();
+    setCourses(courses);
+  };
+
+  const addNewCourse = async () => {
+    const newCourses = await client.createCourse(course);
+    setCourses(newCourses);
+    setCourse([]);
+  };
+
+  const updateCourse = async (id: string) => {
+    const courses = await client.updateCourse(id, course);
+    setCourses(courses);
+    setCourse([]);
+  };
+
+  const deleteCourse = async (id: string) => {
+    const courses = await client.deleteCourse(id);
+    setCourses(courses);
+  };
+
+  useEffect(() => {
+    fetchAllCourses();
+  }, []);
+
   return (
     <div className="p-4">
       <h1>Dashboard</h1>
@@ -55,7 +70,9 @@ function Dashboard({
           </button>
           <button
             className="btn btn-primary wd-dashboard-btn-padding wd-add-item-padding wd-blue-dashboard-btn"
-            onClick={updateCourse}
+            onClick={() => {
+              updateCourse(course.id);
+            }}
           >
             Update
           </button>
