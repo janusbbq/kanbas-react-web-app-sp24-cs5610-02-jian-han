@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
+import { FaCircleCheck } from "react-icons/fa6";
 import {
   addQuiz,
   deleteQuiz,
@@ -12,6 +13,22 @@ import {
 import { KanbasState } from "../../../store";
 import * as client from "../client";
 
+function formatDate(dateString: any) {
+  if (!dateString) return "Invalid date";
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "Invalid date";
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "2-digit",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  const formatter = new Intl.DateTimeFormat("en-US", options);
+  return formatter.format(date).replace(",", " at");
+}
+
 function QuizDetails() {
   const { courseId, quizId } = useParams();
   const navigate = useNavigate();
@@ -20,8 +37,10 @@ function QuizDetails() {
   const navigateToQuizDetailsEditor = () => {
     navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/Details`);
   };
-
-  const quiz = useSelector((state: KanbasState) => state.quizReducer.quiz);
+  const quizList = useSelector(
+    (state: KanbasState) => state.quizReducer.quizzes
+  );
+  const quiz = quizList.find((q) => q.course === courseId && q._id === quizId);
 
   useEffect(() => {
     if (typeof courseId === "string") {
@@ -31,15 +50,52 @@ function QuizDetails() {
     }
   }, [courseId, dispatch]);
 
+  const [quizPublish, updatePublish] = useState(quiz ? quiz.published : false);
+
+  const handlePublish = (quizId: any | null, e: any) => {
+    e.preventDefault();
+    if (!quizId) return;
+    const quiz = quizList.find((q) => q._id === quizId);
+    if (quiz) {
+      const updatedQuiz = { ...quiz, published: !quiz.published };
+      client.updateQuiz(updatedQuiz).then(() => {
+        dispatch(updateQuiz(updatedQuiz));
+      });
+    }
+  };
+
+  const handlePreviewClick = () => {
+    if (quiz?._id) {
+      navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quiz._id}/Preview`);
+    }
+  };
+
   return (
     <div className="quiz-details-container">
       <div className="quiz-controls">
-        {quiz.published ? (
-          <button className="control-button green">Published</button>
+        {quiz ? (
+          quiz && quiz.isPublished ? (
+            <button
+              className="control-button gray"
+              onClick={(e) => handlePublish(quiz._id, e)}
+            >
+              Published
+            </button>
+          ) : (
+            <button
+              className="control-button gray"
+              onClick={(e) => handlePublish(quiz._id, e)}
+            >
+              Unpublish
+            </button>
+          )
         ) : (
-          <button className="control-button gray">Unpublish</button>
+          <p>Loading...</p>
         )}
-        <button className="control-button">Preview</button>
+
+        <button className="control-button" onClick={handlePreviewClick}>
+          Preview
+        </button>
         <button
           className="control-button"
           onClick={navigateToQuizDetailsEditor}
