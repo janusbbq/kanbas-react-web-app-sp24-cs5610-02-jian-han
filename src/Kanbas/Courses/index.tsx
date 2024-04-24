@@ -13,6 +13,12 @@ import CourseDetails from "./Settings/CourseDetails";
 import CourseSettingsNavigation from "./Settings/Navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import QuizDetails from "./Quizzes/Details";
+import QuizQuestionMain from "./Quizzes/Editor/quizQuestionMain";
+import QuizList from "./Quizzes/List";
+import MultipleChoiceQuestion from "./Quizzes/Editor/MultipleChoiceQuestion";
+import QuizzDetailsEditor from "./Quizzes/Editor";
+
 function Courses() {
   const API_BASE = process.env.REACT_APP_BASE_API_URL;
   const { courseId } = useParams();
@@ -47,7 +53,25 @@ function Courses() {
               path="Assignments/:assignmentId"
               element={<AssignmentEditor />}
             />
-            <Route path="Quizzes" element={<h1>Quizzes</h1>} />
+
+            {/* ----------------Quizzes Part---------------- */}
+            <Route path="Quizzes" element={<QuizList />} />
+            <Route path="Quizzes/:quizId" element={<QuizDetails />} />
+            <Route
+              path="Quizzes/:quizId/Details"
+              element={<QuizzDetailsEditor />}
+            />
+            {/*
+            <Route
+              path="Quizzes/:quizId/Questions"
+              element={<QuizQuestionMain />}
+            />
+            <Route
+              path="Quizzes/:quizId/Questions/NewQuestions"
+              element={<MultipleChoiceQuestion />}
+            />
+            */}
+
             <Route path="Grades" element={<Grades />} />
             <Route path="People" element={<h1>People</h1>} />
             <Route path="Settings" element={<CourseDetails />} />
