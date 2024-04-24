@@ -4,8 +4,17 @@ import { TbFilePencil } from "react-icons/tb";
 import "./index.css";
 import * as client from "../Courses/client";
 
+interface Course {
+  _id: string;
+  name: string;
+  number: string;
+  startDate: string;
+  endDate: string;
+  image?: string; // Assuming image is optional
+}
+
 function Dashboard() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<Course[]>([]);
   const [course, setCourse] = useState({} as any);
 
   const fetchAllCourses = async () => {
@@ -13,21 +22,24 @@ function Dashboard() {
     setCourses(courses);
   };
 
-  const addNewCourse = async () => {
-    const newCourses = await client.createCourse(course);
-    setCourses(newCourses);
-    setCourse([]);
-  };
-
-  const updateCourse = async (id: string) => {
-    const courses = await client.updateCourse(id, course);
-    setCourses(courses);
-    setCourse([]);
+  const createCourse = async () => {
+    const newCourse = await client.createCourse(course);
+    fetchAllCourses();
   };
 
   const deleteCourse = async (id: string) => {
-    const courses = await client.deleteCourse(id);
-    setCourses(courses);
+    try {
+      await client.deleteCourse(id);
+      const updatedCourses = courses.filter((c: any) => c._id !== id);
+      setCourses(updatedCourses);
+    } catch (error) {
+      console.log("Failed to delete course:", error);
+    }
+  };
+
+  const updateCourse = async () => {
+    const updateCourse = await client.updateCourse(course);
+    fetchAllCourses();
   };
 
   useEffect(() => {
@@ -64,14 +76,14 @@ function Dashboard() {
         <div className="wd-btn-move-right">
           <button
             className="btn wd-green-dashboard-btn wd-dashboard-btn-padding wd-add-item-padding"
-            onClick={addNewCourse}
+            onClick={createCourse}
           >
             Add
           </button>
           <button
             className="btn btn-primary wd-dashboard-btn-padding wd-add-item-padding wd-blue-dashboard-btn"
             onClick={() => {
-              updateCourse(course.id);
+              updateCourse();
             }}
           >
             Update

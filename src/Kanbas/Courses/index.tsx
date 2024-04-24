@@ -15,13 +15,13 @@ import * as client from "./client";
 function Courses({ courses }: { courses: any[] }) {
   const { courseId } = useParams();
   const [course, setCourse] = useState<any>({ _id: "" });
-  const fetchCourse = async (courseId?: string) => {
-    const course = await client.fetchCourseByID(courseId);
+  const findCourseById = async (courseId?: string) => {
+    const course = await client.fetchCourseById(courseId);
     setCourse(course);
   };
 
   useEffect(() => {
-    fetchCourse(courseId);
+    findCourseById(courseId);
   }, [courseId]);
 
   return (
