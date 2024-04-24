@@ -10,13 +10,19 @@ interface Course {
   number: string;
   startDate: string;
   endDate: string;
-  image?: string; // Assuming image is optional
+  image: string; // Assuming image is optional
 }
 
 function Dashboard() {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [course, setCourse] = useState({} as any);
-
+  const [course, setCourse] = useState({
+    _id: Date.now().toString(),
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    image: "reactjs.jpg",
+  });
   const fetchAllCourses = async () => {
     const courses = await client.fetchAllCourses();
     setCourses(courses);
