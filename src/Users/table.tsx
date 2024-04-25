@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
-import { BsFillCheckCircleFill, BsPencil, BsTrash3Fill, BsPlusCircleFill } from "react-icons/bs";
+import {
+  BsFillCheckCircleFill,
+  BsPencil,
+  BsTrash3Fill,
+  BsPlusCircleFill,
+} from "react-icons/bs";
 import { PiNotePencilBold } from "react-icons/pi";
 import { User } from "./client";
 
 export default function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
-  
+
   const [user, setUser] = useState<User>({
-    _id: "", username: "", password: "", firstName: "",
-    lastName: "", role: "USER" });
-  
+    _id: "",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    role: "USER",
+  });
+
   const [role, setRole] = useState("USER");
-  
+
   const createUser = async () => {
     try {
       const newUser = await client.createUser(user);
@@ -34,8 +44,7 @@ export default function UserTable() {
   const updateUser = async () => {
     try {
       const status = await client.updateUser(user);
-      setUsers(users.map((u) =>
-        (u._id === user._id ? user : u)));
+      setUsers(users.map((u) => (u._id === user._id ? user : u)));
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +57,7 @@ export default function UserTable() {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const fetchUsers = async () => {
     const users = await client.fetchAllUsers();
@@ -61,25 +70,26 @@ export default function UserTable() {
     setUsers(users);
   };
 
-
-  useEffect(() => { fetchUsers(); }, []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   return (
     <div>
-        <div className="d-flex justify-content-between mb-2 mt-4">
-            <h2 className="text-primary">User Table</h2>
-            <select
-                onChange={(e) => fetchUsersByRole(e.target.value)}
-                value={role || "USER"}
-                className="form-select w-25 float-end"
-            >
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
-                <option value="FACULTY">Faculty</option>
-                <option value="STUDENT">Student</option>
-                <option value="">All Roles</option>
-            </select>
-        </div>
+      <div className="d-flex justify-content-between mb-2 mt-4">
+        <h2 className="text-primary">User Table</h2>
+        <select
+          onChange={(e) => fetchUsersByRole(e.target.value)}
+          value={role || "USER"}
+          className="form-select w-25 float-end"
+        >
+          <option value="USER">User</option>
+          <option value="ADMIN">Admin</option>
+          <option value="FACULTY">Faculty</option>
+          <option value="STUDENT">Student</option>
+          <option value="">All Roles</option>
+        </select>
+      </div>
 
       <table className="table">
         <thead>
@@ -92,52 +102,101 @@ export default function UserTable() {
           </tr>
           <tr>
             <td>
-                <div className="d-flex">
-                    <input className="form-control m-2" value={user.username} placeholder="Username" 
-                      onChange={(e) => setUser({ ...user, username: e.target.value })}/>
-                    <input className="form-control m-2" type="password" value={user.password}  placeholder="Password"
-                      onChange={(e) => setUser({ ...user, password: e.target.value })}/>
-                </div>
+              <div className="d-flex">
+                <input
+                  className="form-control m-2"
+                  value={user.username}
+                  placeholder="Username"
+                  onChange={(e) =>
+                    setUser({ ...user, username: e.target.value })
+                  }
+                />
+                <input
+                  className="form-control m-2"
+                  type="password"
+                  value={user.password}
+                  placeholder="Password"
+                  onChange={(e) =>
+                    setUser({ ...user, password: e.target.value })
+                  }
+                />
+              </div>
             </td>
             <td>
-              <input className="form-control m-2" value={user.firstName} onChange={(e) =>
-                setUser({ ...user, firstName: e.target.value })} placeholder="First Name"/>
+              <input
+                className="form-control m-2"
+                value={user.firstName}
+                onChange={(e) =>
+                  setUser({ ...user, firstName: e.target.value })
+                }
+                placeholder="First Name"
+              />
             </td>
             <td>
-              <input className="form-control m-2" value={user.lastName} onChange={(e) =>
-                setUser({ ...user, lastName: e.target.value })} placeholder="Last Name"/>
+              <input
+                className="form-control m-2"
+                value={user.lastName}
+                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+                placeholder="Last Name"
+              />
             </td>
             <td>
-              <select className="form-select m-2" value={user.role} onChange={(e) =>
-                setUser({ ...user, role: e.target.value })}>
+              <select
+                className="form-select m-2"
+                value={user.role}
+                onChange={(e) => setUser({ ...user, role: e.target.value })}
+              >
                 <option value="USER">User</option>
                 <option value="ADMIN">Admin</option>
                 <option value="FACULTY">Faculty</option>
                 <option value="STUDENT">Student</option>
               </select>
             </td>
-            <td className="text-nowrap" style={{verticalAlign: "middle"}}>
-                <a style={{cursor:"pointer"}} onClick={() => {updateUser()}}
-                ><BsFillCheckCircleFill
-                    className="me-2 text-success fs-1 text" size={25}
-                /></a>
-                <a style={{cursor:"pointer"}} onClick={createUser}><BsPlusCircleFill className="text-success ms-2" size={25} /></a>
+            <td className="text-nowrap" style={{ verticalAlign: "middle" }}>
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  updateUser();
+                }}
+              >
+                <BsFillCheckCircleFill
+                  className="me-2 text-success fs-1 text"
+                  size={25}
+                />
+              </a>
+              <a style={{ cursor: "pointer" }} onClick={createUser}>
+                <BsPlusCircleFill className="text-success ms-2" size={25} />
+              </a>
             </td>
           </tr>
         </thead>
         <tbody>
           {users.map((user: any) => (
-            <tr key={user._id} style={{verticalAlign:"middle"}}>
+            <tr key={user._id} style={{ verticalAlign: "middle" }}>
               <td>{user.username}</td>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.role}</td>
-              <td style={{verticalAlign: "middle"}}>
-                <a style={{cursor:"pointer"}} onClick={() => deleteUser(user)}><BsTrash3Fill className="text-danger me-2" size={20} /></a>
-                <a style={{cursor:"pointer"}} onClick={() => selectUser(user)}>
-                  <PiNotePencilBold color="#ffc107" className="text-warning ms-2" size={22} /></a>
-            </td>
-            </tr>))}
+              <td style={{ verticalAlign: "middle" }}>
+                <a
+                  style={{ cursor: "pointer" }}
+                  onClick={() => deleteUser(user)}
+                >
+                  <BsTrash3Fill className="text-danger me-2" size={20} />
+                </a>
+                <a
+                  style={{ cursor: "pointer" }}
+                  onClick={() => selectUser(user)}
+                >
+                  <PiNotePencilBold
+                    color="#ffc107"
+                    className="text-warning ms-2"
+                    size={22}
+                  />
+                </a>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

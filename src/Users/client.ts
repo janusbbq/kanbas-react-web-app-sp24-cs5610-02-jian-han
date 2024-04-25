@@ -2,8 +2,14 @@ import axios from "axios";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
 
-export interface User { _id: string; username: string; password: string; role: string;
-  firstName: string, lastName: string };  
+export interface User {
+  _id: string;
+  username: string;
+  password: string;
+  role: string;
+  firstName: string;
+  lastName: string;
+}
 
 const axiosWithCredentials = axios.create({
   baseURL: `${API_BASE}/api`,

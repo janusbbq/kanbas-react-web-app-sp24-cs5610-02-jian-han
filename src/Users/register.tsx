@@ -11,7 +11,7 @@ export default function RegisterScreen() {
       const newUser = await client.registerUser(user);
       console.log(newUser);
       navigate("/Kanbas/Account/profile");
-    } catch (e:any) {
+    } catch (e: any) {
       setError(e.response.data);
       console.log(e.response.data);
     }
@@ -19,33 +19,16 @@ export default function RegisterScreen() {
 
   return (
     <div>
-      {/* <h1>Sign Up</h1>
-      {error && <div className="alert alert-danger mb-2 mt-2"> {error}</div>}
-      <input
-        value={user.username}
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
-        className="form-control"
-        placeholder="Username"
-      />
-      <input
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        className="form-control mt-2"
-        placeholder="Password"
-        type={"password"}
-      />
-      <button onClick={register} className="btn btn-primary mt-2">
-        Register
-      </button>
-      <Link to="/Kanbas/Account/login" className="btn btn-link mt-2">
-        Login
-      </Link> */}
-      <div className="card mx-auto my-auto text-center" style={{width: "50%"}}>
+      <div
+        className="card mx-auto my-auto text-center"
+        style={{ width: "50%" }}
+      >
         <div className="card-body">
-          
           <h2 className="card-title text-success">Sign Up</h2>
-          <p className="card-text">Unlock your access to Kanbas...</p>
-          {error && <div className="alert alert-danger mb-2 mt-2"> {error}</div>}
+          <p className="card-text">Get access to Kanbas.</p>
+          {error && (
+            <div className="alert alert-danger mb-2 mt-2"> {error}</div>
+          )}
           <input
             value={user.username}
             onChange={(e) => setUser({ ...user, username: e.target.value })}
@@ -59,12 +42,15 @@ export default function RegisterScreen() {
             placeholder="Password"
             type={"password"}
           />
-          
+
           <div className="d-flex justify-content-between">
             <button onClick={register} className="btn btn-success w-50 m-2">
               Register
             </button>
-            <Link to="/Kanbas/Account/login" className="btn btn-outline-primary w-50 m-2">
+            <Link
+              to="/Kanbas/Account/login"
+              className="btn btn-outline-primary w-50 m-2"
+            >
               Login
             </Link>
           </div>
