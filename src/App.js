@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "./logo.svg";
-// import './App.css';
 import HelloWorld from "./Labs/a3/HelloWorld";
 import Labs from "./Labs";
 import { HashRouter, Link, Navigate, Route, Routes } from "react-router-dom";
