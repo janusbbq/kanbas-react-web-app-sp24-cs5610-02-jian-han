@@ -1,8 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import HelloWorld from "./Labs/a3/HelloWorld";
 import Labs from "./Labs";
-import { HashRouter, Link, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import Nav from "./Nav";
 import Kanbas from "./Kanbas";
 
